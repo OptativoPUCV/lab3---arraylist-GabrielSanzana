@@ -38,24 +38,31 @@ void push(ArrayList * l, void * data, int i){
   }
   if(i>l->size)
     return;
-  for(size_t k=l->size ; k>i ; k--)
-    {
+  for(int k=l->size ; k>i ; k--)
       l->data[k] = l->data[k-1];
-    }
   l->data[i]=data;
   l->size++;
     
 }
 
 void* pop(ArrayList * l, int i){
-    return NULL;
+    if(i>l->size || abs(i)>l->size)
+      return NULL;
+    void* aux=get(l,i);
+    if(i<0)
+     i+=l->size;
+    for(int k=i; k<l->size-1; k++)
+      l->data[k] = l->data[k+1];
+    l->size--;
+    return aux;
+  
+    
 }
 
 void* get(ArrayList * l, int i){
     if(i>l->size || abs(i)>l->size)
       return NULL;
-    if(i<0)
-      i+=l->size;
+    i+=l->size;
     return l->data[i];
       
     
