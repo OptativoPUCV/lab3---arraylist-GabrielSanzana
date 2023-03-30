@@ -54,7 +54,7 @@ void* pop(ArrayList * l, int i){
 void* get(ArrayList * l, int i){
     if(i>l->size || abs(i)>l->size)
       return NULL;
-    return l->data[abs(i)];
+    return l->data[i];
       
     
 }
